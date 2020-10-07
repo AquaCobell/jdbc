@@ -30,7 +30,12 @@ public class App
          */
 
         //Date datum = new java.sql.Date(Calendar.getInstance().getTime().getTime());;
-        Date datum = new Date(System.currentTimeMillis());
+        //Date datum = new Date(System.currentTimeMillis());
+
+        long millis=System.currentTimeMillis();
+
+        java.sql.Date datum=new java.sql.Date(millis);
+        System.out.println("hallo " +datum.getTime() +"  ");
         byte test = 1;
         insertInvoice(datum,"Call of Duty Black Ops 2",80 ,test);
         showInvoice();
@@ -80,15 +85,16 @@ public class App
     }
 
 
-    public static void insertInvoice(Date date, String description, double value, byte paid)
+    public static void insertInvoice(Date datum, String besch, int wert, byte bez)
     {
         connectDatabase();
         try
         {
             Statement state = con.createStatement();
-            String sql = "insert into invoice"
-                + "(date, description, value, paid)"
-                    + "values(date, description, value, paid)";
+            String sql = "insert into invoice "
+                + " (date, description, value, paid)"
+                + " values ('"+datum+"','"+besch+"','"+wert+"','"+bez+"')";
+            state.executeUpdate(sql);
         }
         catch(Exception e)
         {
