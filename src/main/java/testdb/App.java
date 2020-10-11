@@ -36,8 +36,8 @@ public class App
 
         java.sql.Date datum=new java.sql.Date(millis);
         System.out.println("hallo " +datum.getTime() +"  ");
-        byte test = 1;
-        insertInvoice(datum,"Call of Duty Black Ops 2",80 ,test);
+        byte test = 0;
+        insertInvoice(datum,"Testobjekt",30 ,test);
         showInvoice();
 
     }
