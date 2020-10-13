@@ -2,7 +2,7 @@ package testdb;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class SQLInvoiceDAOImpl implements InvoiceDAO
 {
