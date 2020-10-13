@@ -96,7 +96,7 @@ public class SQLInvoiceDAOImpl implements InvoiceDAO
                     + " where id = '"+id+"' ";
 
             state.executeUpdate(sql);
-            
+
         }
         catch(Exception e)
         {

@@ -17,27 +17,24 @@ public class App
         System.out.println("Test");
 
 
-
-
-        //Date datum = new java.sql.Date(Calendar.getInstance().getTime().getTime());;
+        //Methoden tests
         //Date datum = new Date(System.currentTimeMillis());
-
-        //long millis=System.currentTimeMillis();
-
-        //java.sql.Date datum=new java.sql.Date(millis);
-        //System.out.println("hallo " +datum.getTime() +"  ");
         //byte test = 0;
-
         //insertInvoice(datum,"Testobjekt",30 ,test); //funtkioniert
-        //deleteInvoice(30); //funktioniert nicht
+
+        //deleteInvoice(30);
+
         //updateInvoice(30,datum,"Moin",30 ,test); //funktioniert
+
         //deleteInvoice(30); //funktioniert
         //showInvoice();
 
         //updateInvoice(datum,"Moin",30 ,test);
         //deleteInvoice(24);
 
-        //INVOICE TEST
+        //-----------------------------------------------------------------------//
+        /*
+        //INVOICE TEST (Array)
         InvoiceDAOImpl test = new InvoiceDAOImpl();
         //SHOW INVOICE
         ArrayList<Invoice> rechn = test.showInvoice();
@@ -57,6 +54,26 @@ public class App
         Invoice test2 = new Invoice(50,datum,"hier bin ich",5, (byte) 1);
         test.insertInvoice(test2);
         System.out.println("debug me");
+        */
+        //-------------------------------------------------------------------------------//
+        //INVOICE TEST (MYSQL)
+        //showinvoice
+        SQLInvoiceDAOImpl test3 = new SQLInvoiceDAOImpl();
+        ArrayList<Invoice> invoices = test3.showInvoice();
+        System.out.println("Debug me");
+
+        //deleteInvoice
+        test3.deleteInvoice(6);
+
+        //Insert Invoice
+        Date datum = new Date(System.currentTimeMillis());
+        Invoice test4 = new Invoice(50,datum,"hier bin ich",5, (byte) 1);
+        test3.insertInvoice(test4);
+
+        //Update Invoice
+        test3.updateInvoice(31,datum,"hallo nochmals",40, (byte) 1);
+
+
     }
 
     static Connection con;
