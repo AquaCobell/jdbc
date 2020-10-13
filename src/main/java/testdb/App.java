@@ -60,7 +60,7 @@ public class App
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", "root", "");
-            stmt=con.createStatement();
+            //stmt=con.createStatement();
         }
         catch(Exception e)
         {
@@ -71,6 +71,15 @@ public class App
     public static void showInvoice()
     {
         connectDatabase();
+        Statement stmt = null;
+        try
+        {
+            stmt=con.createStatement();
+        }
+        catch(Exception e)
+        {
+
+        }
 
 
 
