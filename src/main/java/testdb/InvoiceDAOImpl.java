@@ -28,7 +28,7 @@ public class InvoiceDAOImpl implements InvoiceDAO
 
     }
     @Override
-    public List showInvoice()
+    public ArrayList<Invoice> showInvoice()
     {
 
         return invoices;

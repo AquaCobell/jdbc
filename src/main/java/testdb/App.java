@@ -2,6 +2,7 @@ package testdb;
 
 import java.io.PrintStream;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -33,21 +34,41 @@ public class App
         //Date datum = new java.sql.Date(Calendar.getInstance().getTime().getTime());;
         //Date datum = new Date(System.currentTimeMillis());
 
-        long millis=System.currentTimeMillis();
+        //long millis=System.currentTimeMillis();
 
-        java.sql.Date datum=new java.sql.Date(millis);
+        //java.sql.Date datum=new java.sql.Date(millis);
         //System.out.println("hallo " +datum.getTime() +"  ");
-        byte test = 0;
+        //byte test = 0;
 
         //insertInvoice(datum,"Testobjekt",30 ,test); //funtkioniert
         //deleteInvoice(30); //funktioniert nicht
         //updateInvoice(30,datum,"Moin",30 ,test); //funktioniert
-        deleteInvoice(30); //funktioniert
-        showInvoice();
+        //deleteInvoice(30); //funktioniert
+        //showInvoice();
 
         //updateInvoice(datum,"Moin",30 ,test);
         //deleteInvoice(24);
 
+        //INVOICE TEST
+        InvoiceDAOImpl test = new InvoiceDAOImpl();
+        //SHOW INVOICE
+        ArrayList<Invoice> rechn = test.showInvoice();
+
+        System.out.println("test2");
+        for(Invoice inv : rechn)
+        {
+            System.out.println(inv.toString());
+        }
+
+        //deleteInvoice
+        test.deleteInvoice(3);
+        System.out.println("debug me");
+
+        //insertInvoice
+        Date datum = new Date(System.currentTimeMillis());
+        Invoice test2 = new Invoice(50,datum,"hier bin ich",5, (byte) 1);
+        test.insertInvoice(test2);
+        System.out.println("debug me");
     }
 
     static Connection con;
@@ -78,7 +99,7 @@ public class App
         }
         catch(Exception e)
         {
-
+            System.out.println(e);
         }
 
 
