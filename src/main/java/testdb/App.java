@@ -17,7 +17,8 @@ public class App
         System.out.println("Test");
 
 
-        //Methoden tests
+        //Methoden Test
+
         //Date datum = new Date(System.currentTimeMillis());
         //byte test = 0;
         //insertInvoice(datum,"Testobjekt",30 ,test); //funtkioniert
@@ -34,7 +35,8 @@ public class App
 
         //-----------------------------------------------------------------------//
         /*
-        //INVOICE TEST (Array)
+        //INVOICE TEST (Array InvoiceDAOImpl.java)
+
         InvoiceDAOImpl test = new InvoiceDAOImpl();
         //SHOW INVOICE
         ArrayList<Invoice> rechn = test.showInvoice();
@@ -55,8 +57,10 @@ public class App
         test.insertInvoice(test2);
         System.out.println("debug me");
         */
+
         //-------------------------------------------------------------------------------//
-        //INVOICE TEST (MYSQL)
+        //INVOICE TEST (MYSQL SQLInvoiceDAOImpl.java)
+
         //showinvoice
         SQLInvoiceDAOImpl test3 = new SQLInvoiceDAOImpl();
         ArrayList<Invoice> invoices = test3.showInvoice();
