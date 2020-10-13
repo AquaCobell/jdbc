@@ -35,10 +35,16 @@ public class App
         long millis=System.currentTimeMillis();
 
         java.sql.Date datum=new java.sql.Date(millis);
-        System.out.println("hallo " +datum.getTime() +"  ");
+        //System.out.println("hallo " +datum.getTime() +"  ");
         byte test = 0;
-        insertInvoice(datum,"Testobjekt",30 ,test);
+
+        //insertInvoice(datum,"Testobjekt",30 ,test); //funtkioniert
+        //deleteInvoice(30); //funktioniert nicht
+        // updateInvoice(30,datum,"Moin",30 ,test); //funktioniert nicht
         showInvoice();
+
+        //updateInvoice(datum,"Moin",30 ,test);
+        //deleteInvoice(24);
 
     }
 
@@ -93,7 +99,10 @@ public class App
             Statement state = con.createStatement();
             String sql = "insert into invoice "
                 + " (date, description, value, paid)"
-                + " values ('"+datum+"','"+besch+"','"+wert+"','"+bez+"')";
+                + " values ('"+datum+"'" +
+                    ",'"+besch+"'" +
+                    ",'"+wert+"'" +
+                    ",'"+bez+"')";
             state.executeUpdate(sql);
         }
         catch(Exception e)
@@ -103,13 +112,42 @@ public class App
 
 
     }
-    public static void updateInvoice(int id, Date date, String description, double value, byte paid)
+    public static void updateInvoice(int id,Date date, String description, double value, byte paid)
     {
+
+        connectDatabase();
+        try
+        {
+            Statement state = con.createStatement();
+            String sql = "update invoice"
+                    + " set description = '"+description+"' "
+                    + " set date = '"+date+"' "
+                    + " set value = '"+value+"' "
+                    + " set paid = '"+paid+ "' "
+                    + " where id = '"+id+"' ";
+            System.out.println("hello");
+        }
+        catch(Exception e)
+        {
+
+            System.out.println(e);
+        }
+
+
 
     }
     public static void deleteInvoice(int id)
     {
-
+        connectDatabase();
+        try
+        {
+            Statement state = con.createStatement();
+            String sql = "delete from invoice where ID = '"+id+"' ";
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
     }
 
 
