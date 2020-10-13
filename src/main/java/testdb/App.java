@@ -40,7 +40,8 @@ public class App
 
         //insertInvoice(datum,"Testobjekt",30 ,test); //funtkioniert
         //deleteInvoice(30); //funktioniert nicht
-        // updateInvoice(30,datum,"Moin",30 ,test); //funktioniert nicht
+        //updateInvoice(30,datum,"Moin",30 ,test); //funktioniert
+        deleteInvoice(30); //funktioniert
         showInvoice();
 
         //updateInvoice(datum,"Moin",30 ,test);
@@ -121,11 +122,30 @@ public class App
             Statement state = con.createStatement();
             String sql = "update invoice"
                     + " set description = '"+description+"' "
+                    + " where id = '"+id+"' ";
+            state.executeUpdate(sql);
+
+            sql = "update invoice"
                     + " set date = '"+date+"' "
+                    + " where id = '"+id+"' ";
+            state.executeUpdate(sql);
+
+            sql = "update invoice"
                     + " set value = '"+value+"' "
+                    + " where id = '"+id+"' ";
+            state.executeUpdate(sql);
+
+            sql = "update invoice"
+                    + " set value = '"+value+"' "
+                    + " where id = '"+id+"' ";
+            state.executeUpdate(sql);
+
+            sql = "update invoice"
                     + " set paid = '"+paid+ "' "
                     + " where id = '"+id+"' ";
-            System.out.println("hello");
+
+            state.executeUpdate(sql);
+            System.out.println("Done");
         }
         catch(Exception e)
         {
@@ -143,6 +163,8 @@ public class App
         {
             Statement state = con.createStatement();
             String sql = "delete from invoice where ID = '"+id+"' ";
+            state.executeUpdate(sql);
+            System.out.println("Deleted");
         }
         catch(Exception e)
         {
