@@ -4,13 +4,15 @@ import java.sql.Date;
 
 public class Invoice
 {
+    long id;
     Date date;
     String description;
     double value;
     byte paid;
 
-    public Invoice(Date date, String description, double value, byte paid)
+    public Invoice(long id,Date date, String description, double value, byte paid)
     {
+        this.id = id;
         this.date = date;
         this.description = description;
         this.value = value;
@@ -18,7 +20,9 @@ public class Invoice
     }
 
 
-
+    public long getId() {
+        return id;
+    }
 
     public Date getDate()
     {

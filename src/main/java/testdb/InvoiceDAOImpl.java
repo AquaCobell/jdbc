@@ -1,35 +1,97 @@
 package testdb;
 
 import java.sql.Date;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import static testdb.App.connectDatabase;
 
 public class InvoiceDAOImpl implements InvoiceDAO
 {
 
+    ArrayList<Invoice> invoices;
 
+    InvoiceDAOImpl()
+    {
+        invoices = new ArrayList<>();
 
+        Date date = new Date(System.currentTimeMillis());
+        Invoice test1 = new Invoice(1,date,"test1",1, (byte) 1);
+        Invoice test2 = new Invoice(2,date,"test2",2, (byte) 0);
+        Invoice test3 = new Invoice(3,date,"test3",3, (byte) 1);
+        Invoice test4 = new Invoice(4,date,"test4",4, (byte) 0);
+        invoices.add(test1);
+        invoices.add(test2);
+        invoices.add(test3);
+        invoices.add(test4);
+
+    }
     @Override
     public List showInvoice()
     {
-        return null;
+
+        return invoices;
     }
 
     @Override
-    public void updateInvoice(int id, Date date, String description, double value, byte paid)
+    public void updateInvoice(long id, Date date, String description, double value, byte paid)
     {
 
+        Invoice invoice = null;
+        for(Invoice inv: invoices)
+        {
+            if(inv.getId()== id)
+            {
+                invoice = inv;
+                invoices.remove(inv);
+            }
+
+        }
+        if(invoice != null)
+        {
+            invoice.setDate(date);
+            invoice.setDescription(description);
+            invoice.setValue(value);
+            invoice.setPaid(paid);
+            invoices.add(invoice);
+
+        }
     }
-
     @Override
-    public void deleteInvoice(int id)
+    public void deleteInvoice(long id)
     {
-
+        for(Invoice inv: invoices)
+        {
+            if(inv.getId()== id)
+            {
+                invoices.remove(inv);
+            }
+        }
     }
-
     @Override
-    public void insertInvoice(Date datum, String besch, int wert, byte bez)
+    public void insertInvoice(Invoice invoice)
     {
-
+        if(invoice != null)
+        {
+            invoices.add(invoice);
+        }
     }
 }
+
+ /*connectDatabase();
+        try
+        {
+            ResultSet rs=stmt.executeQuery("select * from invoice");
+            while(rs.next())
+            {
+                //Date date, String description, double value, byte paid
+                Invoice invoice = new Invoice(rs.getInt(1),rs.getDate(2),rs.getString(3),rs.getDouble(4),rs.getByte(5));
+                invoices.add(invoice);
+            }
+            con.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }*/

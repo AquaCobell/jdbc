@@ -7,11 +7,11 @@ public interface InvoiceDAO
 {
     public List showInvoice();
 
-    public  void updateInvoice(int id, Date date, String description, double value, byte paid);
+    public  void updateInvoice(long id, Date date, String description, double value, byte paid);
 
-    public  void deleteInvoice(int id);
+    public  void deleteInvoice(long id);
 
-    public  void insertInvoice(Date datum, String besch, int wert, byte bez);
+    public  void insertInvoice(Invoice invoice);
 
 
 

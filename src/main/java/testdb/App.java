@@ -15,6 +15,7 @@ public class App
     {
         System.out.println("Test");
 
+
         /*try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test","root","");
@@ -49,10 +50,10 @@ public class App
 
     }
 
-
-
     static Connection con;
     static Statement stmt;
+
+
     public static void connectDatabase()
     {
         try
