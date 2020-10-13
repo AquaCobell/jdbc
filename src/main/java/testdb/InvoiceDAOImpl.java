@@ -79,19 +79,5 @@ public class InvoiceDAOImpl implements InvoiceDAO
     }
 }
 
- /*connectDatabase();
-        try
-        {
-            ResultSet rs=stmt.executeQuery("select * from invoice");
-            while(rs.next())
-            {
-                //Date date, String description, double value, byte paid
-                Invoice invoice = new Invoice(rs.getInt(1),rs.getDate(2),rs.getString(3),rs.getDouble(4),rs.getByte(5));
-                invoices.add(invoice);
-            }
-            con.close();
-        }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }*/
+
+
