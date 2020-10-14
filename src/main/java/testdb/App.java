@@ -34,9 +34,9 @@ public class App
         //deleteInvoice(24);
 
         //-----------------------------------------------------------------------//
-        /*
-        //INVOICE TEST (Array InvoiceDAOImpl.java)
 
+        //INVOICE TEST (Array InvoiceDAOImpl.java)
+        /*
         InvoiceDAOImpl test = new InvoiceDAOImpl();
         //SHOW INVOICE
         ArrayList<Invoice> rechn = test.showInvoice();
@@ -47,6 +47,14 @@ public class App
             System.out.println(inv.toString());
         }
 
+        //Update Invoice
+
+        Date datum = new Date(System.currentTimeMillis());
+        System.out.println("debug");
+        test.updateInvoice(2, datum,"hallo",300, (byte) 1);
+        System.out.println("debug me");
+
+
         //deleteInvoice
         test.deleteInvoice(3);
         System.out.println("debug me");
@@ -56,11 +64,13 @@ public class App
         Invoice test2 = new Invoice(50,datum,"hier bin ich",5, (byte) 1);
         test.insertInvoice(test2);
         System.out.println("debug me");
+
         */
+
 
         //-------------------------------------------------------------------------------//
         //INVOICE TEST (MYSQL SQLInvoiceDAOImpl.java)
-
+        /*
         //showinvoice
         SQLInvoiceDAOImpl test3 = new SQLInvoiceDAOImpl();
         ArrayList<Invoice> invoices = test3.showInvoice();
@@ -77,7 +87,7 @@ public class App
         //Update Invoice
         test3.updateInvoice(31,datum,"hallo nochmals",40, (byte) 1);
 
-
+            */
     }
 
     static Connection con;

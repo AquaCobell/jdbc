@@ -35,20 +35,22 @@ public class InvoiceDAOImpl implements InvoiceDAO
     }
 
     @Override
-    public void updateInvoice(long id, Date date, String description, double value, byte paid)
+    public void updateInvoice(long id, Date date, String description, double value, byte paid) //Updated
     {
 
-        Invoice invoice = null;
+        Invoice invoice = new Invoice(id,date,description,value,paid);
         for(Invoice inv: invoices)
         {
             if(inv.getId()== id)
             {
-                invoice = inv;
-                invoices.remove(inv);
+                Invoice temp = null;
+                temp = inv;
+                invoices.set(invoices.indexOf(inv),invoice);
             }
 
         }
-        if(invoice != null)
+
+        /*if(invoice != null)
         {
             invoice.setDate(date);
             invoice.setDescription(description);
@@ -57,6 +59,9 @@ public class InvoiceDAOImpl implements InvoiceDAO
             invoices.add(invoice);
 
         }
+
+         */
+
     }
     @Override
     public void deleteInvoice(long id)
